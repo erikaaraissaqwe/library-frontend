@@ -9,6 +9,21 @@
       <div class="card-content">
         <div class="content">
           <h3 class="title is-3 has-text-centered">Cadastre-se</h3>
+          <div
+          *ngIf="hasErrorServer"
+          class="notification is-danger is-light"
+          >
+          <button
+            class="delete"
+            (click)="hasErrorServer = false"
+          ></button>
+          <span class="icon-text">
+            <span class="icon">
+              <fa-icon [icon]="faExclamationCircle"></fa-icon>
+            </span>
+            <span>{{ msgServerError }}</span>
+          </span>
+        </div>
           <form id="signUpForm" [formGroup]="formSignup" (submit)="onSubmit()">
             <div class="field">
               <label for="name" class="label">Nome:</label>
@@ -101,7 +116,6 @@
                   }"
                   type="password"
                   formControlName="newPassword"
-                  (input)="trimInput('newPassword')"
                 />
               </div>
               <p

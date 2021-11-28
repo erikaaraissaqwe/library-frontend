@@ -9,9 +9,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ButtonBackComponent } from './components/button-back/button-back.component';
 import { ErrorFormPipe } from './pipes/error-form.pipe';
-import { AuthenticationService } from './services/authentication.service';
 import { HomeComponent } from './pages/home/home.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { Interceptor } from './helpers/Interceptor';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,11 @@ import { PhonePipe } from './pipes/phone.pipe';
     FormsModule
   ],
   providers:  [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthenticationService,
-    //   multi: true,
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
   formSignup: FormGroup;
   isLoading = false;
   phone: string;
+  hasErrorServer = false;
+  msgServerError: string;
 
   constructor(
     private router: Router,
@@ -24,27 +26,27 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    console.log(this.formSignup.get("phoneNumber").errors);
   }
 
   initForm() {
     this.formSignup = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       email: new FormControl("", [Validators.required, Validators.email]),
-      phoneNumber: new FormControl("", [Validators.required]),
+      phoneNumber: new FormControl("", [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(13),
+        Validators.pattern('^[0-9]+$')
+      ]),
       newPassword: new FormControl("", [
         Validators.required,
         Validators.minLength(8),
+        Validators.maxLength(16),
       ]),
     });
   }
-
-  trimInput(input: string): void {
-    const field = this.formSignup.get(input);
-    if (field) {
-      field.setValue(field.value.trim());
-    }
-  }
-
+  
   onSubmit(): void {
     if (this.formSignup.valid) {
       this.isLoading = true;
@@ -61,11 +63,10 @@ export class SignupComponent implements OnInit {
           (data) => {
             this.router.navigate(['/home']);
           },
-          (error) => {
-            // this.serverError.id = error.id;
-            // this.serverError.hasError = true;
+          (err) => {
+            this.msgServerError = err.error.msg;
+            this.hasErrorServer = true;
             this.isLoading = false;
-            alert(error.error.msg);
           }
         );
     }

@@ -11,11 +11,15 @@ export class ErrorFormPipe implements PipeTransform {
     }
     switch(Object.keys(error)[0]) {
       case 'required':
-        return `O campo '${input}' é obrigatório`;
+        return `${input} é obrigatório.`;
       case 'minlength':
-        return `O campo '${input}' precisa de no mínimo ${error.minlength.requiredLength} caracteres`;
+        return `${input} precisa de no mínimo ${error.minlength.requiredLength} caracteres.`;
+      case 'maxlength':
+        return `${input} precisa ter até ${error.maxlength.requiredLength} caracteres.`;
       case 'email':
-        return `O campo '${input}' precisa ser um email válido`;
+        return `${input} precisa ser válido.`;
+        case 'pattern':
+        return `${input} precisa ser um telefone válido. Por favor, digite somente números.`;
       default:
         return '';
     }
