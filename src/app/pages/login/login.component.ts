@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
     private routerActivated: ActivatedRoute,
     private authenticationService: AuthenticationService
   ) {
-    // if (this.authenticationService.isLogged()) {
-    //   this.router.navigate(['/home']);
-    // }
+    if (this.authenticationService.isLogged()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   ngOnInit(): void {
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       const user: User  = {
         email: this.formLogin.get('email').value,
         password: this.formLogin.get('password').value,
+        admin: this.isAdm,
       };
       this.authenticationService
         .login(user, this.isAdm)

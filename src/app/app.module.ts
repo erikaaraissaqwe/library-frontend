@@ -12,6 +12,9 @@ import { ErrorFormPipe } from './pipes/error-form.pipe';
 import { HomeComponent } from './pages/home/home.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { Interceptor } from './helpers/Interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
+import { RegisterBookComponent } from './pages/register-book/register-book.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,17 @@ import { Interceptor } from './helpers/Interceptor';
     ButtonBackComponent,
     ErrorFormPipe,
     HomeComponent,
-    PhonePipe
+    PhonePipe,
+    NavbarComponent,
+    NavbarAdminComponent,
+    RegisterBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers:  [
     {

@@ -1,0 +1,57 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/home">
+        <!-- <img src="https://bulma.io/images/bulma-logo.png" width="224" height="56"> -->
+        <img src="../../../assets/logo.png">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Estante
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Meu espaço
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Livros emprestados
+            </a>
+            <a class="navbar-item">
+              Livros atrasados
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Usuários
+            </a>
+            <a class="navbar-item">
+                Usuários com livros
+              </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" routerLink="/registerBook">
+              <strong>Novo Livro</strong>
+            </a>
+            <a class="button is-light" (click)="logout()">
+              Sair
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

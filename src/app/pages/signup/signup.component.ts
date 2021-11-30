@@ -19,9 +19,9 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    // if (this.authenticationService.isLogged()) {
-    //   this.router.navigate(['/home']);
-    // }
+    if (this.authenticationService.isLogged()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   ngOnInit(): void {
