@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Alert } from 'selenium-webdriver';
 import { Book } from 'src/app/models/Book';
 import { BookService } from 'src/app/services/book.service';
 
@@ -18,7 +19,7 @@ export class DetailsBookComponent implements OnInit {
     private bookService: BookService,
     private routerActivated: ActivatedRoute,) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     let id = this.routerActivated.snapshot.paramMap.get("id");
     console.log(id);
     this.loadBook(id);
@@ -28,8 +29,28 @@ export class DetailsBookComponent implements OnInit {
     this.bookService.listOne(id).pipe(first()).subscribe(
      (book) => {
        console.log(book);
-      this.book = book;
-     }
+        this.book = book;
+     },
+     (err) => {
+      alert(err.error.msg);
+      }
     );
+  }
+
+  delete(id: string, title: string) {
+    if (confirm("Remover "+ title +"?")) {
+      this.bookService.delete(id).subscribe(
+        (res) => {
+        if (res.ok) {
+          console.log(res);
+          alert("O livro foi deletado com sucesso");
+          this.router.navigate(["/home"]);
+        }
+      },
+      (err) => {
+        alert(err.error.msg);
+      }
+      );
+    }
   }
 }

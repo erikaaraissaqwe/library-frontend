@@ -6,7 +6,7 @@
         <div class="card is-half
         is-offset-one-quarter">
             <div class="card-image">
-              <figure class="image is-2by3">
+              <figure class="image is-1by1">
                 <a>
                   <img [src]="book.image">
                 </a>
@@ -15,16 +15,36 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4 is-text-overflow">{{book.title}}</p>
-                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">{{book.author}}</p>
+                  <p class="title is-4 is-text-overflow">Título: {{book.title}}</p>
+                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Autor: {{book.author}}</p>
                 </div>
+                </div>
+              <div class="media">
                 <div class="media-content">
-                    <p class="title is-4 is-text-overflow">{{book.isbn}}</p>
-                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">{{book.pages}}</p>
-                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">{{book.dateOfPublication}}</p>
-                  </div>                
+                    <p class="title is-4 is-text-overflow">ISBN: {{book.isbn}}</p>
+                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Páginas: {{book.pages}}</p>
+                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Data da publicação: {{book.dateOfPublication}}</p>
+                </div>                
               </div>
+
+              <div class="media">
+                <div class="media-content">
+                 <button class="button is-primary  is-fullwidth" routerLink="/updateBook/{{book._id}}">
+                    Editar
+                 </button>
+                 <br>
+                 <app-button-back></app-button-back>
+                 <br>
+                 <button class="button is-danger is-fullwidth" (click)="delete(book._id, book.title)">
+                  Remover
+               </button>
+                </div>                
+              </div>
+
+              
             </div>
           </div>
     </div>
 </div>
+
+

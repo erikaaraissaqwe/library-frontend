@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'registerBook', component: RegisterBookComponent, canActivate: [AuthGuard] },
   { path: 'detailsBook/:id', component: DetailsBookComponent, canActivate: [AuthGuard] },
+  { path: 'updateBook/:id', component: RegisterBookComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuard] },

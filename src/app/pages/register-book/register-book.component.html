@@ -10,7 +10,7 @@
       <div class="card">
         <div class="card-content">
           <div class="content">
-            <h3 class="title is-3 has-text-centered">Cadastre um livro</h3>
+            <h3 class="title is-3 has-text-centered">{{title}}</h3>
             <div
             *ngIf="hasErrorServer"
             class="notification is-danger is-light"
@@ -186,17 +186,16 @@
               <div class="field">
                 <label for="resume" class="label">Resumo:</label>
                 <div class="control">
-                  <input
-                    id="resume"
-                    class="input"
-                    [ngClass]="{
-                      'is-danger':
-                        registerForm.get('resume').dirty &&
-                        !registerForm.get('resume').valid
+                  <textarea id="resume"
+                  class="input"
+                  [ngClass]="{
+                    'is-danger':
+                      registerForm.get('resume').dirty &&
+                      !registerForm.get('resume').valid
                     }"
                     type="text"
-                    formControlName="resume"
-                  />
+                    formControlName="resume">
+                  </textarea>
                 </div>
                 <p
                   *ngIf="
@@ -208,9 +207,21 @@
                   {{ registerForm.get("resume").errors | errorForm: "Resumo:" }}
                 </p>
               </div>
-  
-              <div class="field">
+
+              <div class="field" *ngIf="isUpdate">
                 <div class="control">
+                    <label class="checkbox">
+                        <input 
+                        formControlName="borrowed"
+                        (change)="onCheckChange($event)"
+                        type="checkbox">
+                        Está emprestado
+                    </label>
+                </div>
+              </div>
+              
+              <div class="field">
+                <div class="control" *ngIf="!isUpdate">
                   <button
                     class="button is-primary is-fullwidth"
                     [ngClass]="{ 'is-loading': isLoading }"
@@ -218,6 +229,20 @@
                   >
                    Salvar
                   </button>
+                </div>
+                <div class="control" *ngIf="isUpdate">
+                  <button
+                    class="button is-primary is-fullwidth"
+                    [ngClass]="{ 'is-loading': isLoading }"
+                    [disabled]="!registerForm.valid"
+                  >
+                   Atualizar
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <app-button-back></app-button-back>
                 </div>
               </div>
             </form>
