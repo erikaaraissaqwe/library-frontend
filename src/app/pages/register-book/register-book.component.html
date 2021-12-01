@@ -1,11 +1,12 @@
 <app-navbar-admin></app-navbar-admin>
-<div class="columns is-desktop is-vcentered mt-18 mb-12">
-    <div
-      class="
-        column
-        is-4-desktop is-6-tablet is-offset-3-tablet is-offset-4-desktop
-      "
-    >
+<div class="columns">
+  <div
+    class="
+      column
+      is-half
+      is-offset-one-quarter
+    "
+  >
       <div class="card">
         <div class="card-content">
           <div class="content">
@@ -77,85 +78,85 @@
                   {{ registerForm.get("authors").errors | errorForm: "Autor" }}
                 </p>
               </div>
-              
-              <div class="field">
-                <label for="dateOfPublication" class="label">Data de Publicação:</label>
-                <div class="control">
-                  <input
-                    id="dateOfPublication"
-                    class="input"
-                    [ngClass]="{
-                      'is-danger':
-                        registerForm.get('dateOfPublication').dirty &&
-                        !registerForm.get('dateOfPublication').valid
-                    }"
-                    type="date"
-                    formControlName="dateOfPublication"
-                  />
+              <div class="group">
+                <div class="field">
+                  <label for="dateOfPublication" class="label">Data de Publicação:</label>
+                  <div class="control">
+                    <input
+                      id="dateOfPublication"
+                      class="input"
+                      [ngClass]="{
+                        'is-danger':
+                          registerForm.get('dateOfPublication').dirty &&
+                          !registerForm.get('dateOfPublication').valid
+                      }"
+                      type="date"
+                      formControlName="dateOfPublication"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      registerForm.get('dateOfPublication').dirty &&
+                      !registerForm.get('dateOfPublication').valid
+                    "
+                    class="help is-danger"
+                  >
+                    {{ registerForm.get("dateOfPublication").errors | errorForm: "Data de Publicação" }}
+                  </p>
                 </div>
-                <p
-                  *ngIf="
-                    registerForm.get('dateOfPublication').dirty &&
-                    !registerForm.get('dateOfPublication').valid
-                  "
-                  class="help is-danger"
-                >
-                  {{ registerForm.get("dateOfPublication").errors | errorForm: "Data de Publicação" }}
-                </p>
-              </div>
-  
-              <div class="field">
-                <label for="pages" class="label">Páginas:</label>
-                <div class="control">
-                  <input
-                    id="pages"
-                    class="input"
-                    [ngClass]="{
-                      'is-danger':
-                        registerForm.get('pages').dirty &&
-                        !registerForm.get('pages').valid
-                    }"
-                    type="number"
-                    formControlName="pages"
-                  />
+                
+                <div class="field">
+                  <label for="pages" class="label">Páginas:</label>
+                  <div class="control">
+                    <input
+                      id="pages"
+                      class="input"
+                      [ngClass]="{
+                        'is-danger':
+                          registerForm.get('pages').dirty &&
+                          !registerForm.get('pages').valid
+                      }"
+                      type="number"
+                      formControlName="pages"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      registerForm.get('pages').dirty &&
+                      !registerForm.get('pages').valid
+                    "
+                    class="help is-danger"
+                  >
+                    {{ registerForm.get("pages").errors | errorForm: "Páginas" }}
+                  </p>
                 </div>
-                <p
-                  *ngIf="
-                    registerForm.get('pages').dirty &&
-                    !registerForm.get('pages').valid
-                  "
-                  class="help is-danger"
-                >
-                  {{ registerForm.get("pages").errors | errorForm: "Páginas" }}
-                </p>
-              </div>
 
-              <div class="field">
-                <label for="isbn" class="label">Isbn:</label>
-                <div class="control">
-                  <input
-                    id="isbn"
-                    class="input"
-                    [ngClass]="{
-                      'is-danger':
-                        registerForm.get('isbn').dirty &&
-                        !registerForm.get('isbn').valid
-                    }"
-                    type="text"
-                    formControlName="isbn"
-                  />
+                <div class="field">
+                  <label for="isbn" class="label">Isbn:</label>
+                  <div class="control">
+                    <input
+                      id="isbn"
+                      class="input"
+                      [ngClass]="{
+                        'is-danger':
+                          registerForm.get('isbn').dirty &&
+                          !registerForm.get('isbn').valid
+                      }"
+                      type="text"
+                      formControlName="isbn"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      registerForm.get('isbn').dirty &&
+                      !registerForm.get('isbn').valid
+                    "
+                    class="help is-danger"
+                  >
+                    {{ registerForm.get("isbn").errors | errorForm: "Isbn" }}
+                  </p>
                 </div>
-                <p
-                  *ngIf="
-                    registerForm.get('isbn').dirty &&
-                    !registerForm.get('isbn').valid
-                  "
-                  class="help is-danger"
-                >
-                  {{ registerForm.get("isbn").errors | errorForm: "Isbn" }}
-                </p>
               </div>
-
               <div class="field">
                 <label for="image" class="label">Url da Imagem:</label>
                 <div class="control">

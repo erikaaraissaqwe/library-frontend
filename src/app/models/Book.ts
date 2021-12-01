@@ -5,5 +5,6 @@ export interface Book {
     pages: number,
     isbn: string,
     image: string,
-    resume: string
+    resume: string,
+    borrowed?: boolean
   }

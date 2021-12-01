@@ -33,6 +33,7 @@ export class BookService {
     body = body.set("isbn", book.isbn.trim());
     body = body.set("image", book.image.trim());
     body = body.set("resume", book.resume.trim());
+    body = body.set("borrowed", String(book.borrowed));
     return this.http.put<any>(this.backendUrl + id, body, {observe: "response"});
   }
 
