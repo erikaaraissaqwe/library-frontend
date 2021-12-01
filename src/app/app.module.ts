@@ -15,6 +15,8 @@ import { Interceptor } from './helpers/Interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
 import { RegisterBookComponent } from './pages/register-book/register-book.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RegisterBookComponent } from './pages/register-book/register-book.compo
     PhonePipe,
     NavbarComponent,
     NavbarAdminComponent,
-    RegisterBookComponent
+    RegisterBookComponent,
+    UserListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
