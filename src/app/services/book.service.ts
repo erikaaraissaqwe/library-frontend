@@ -16,7 +16,7 @@ export class BookService {
     let body = new HttpParams();
     body = body.set("title", book.title.trim());
     body = body.set("author", book.author.trim());
-    body = body.set("dateOfPublication", book.title.trim());
+    body = body.set("dateOfPublication", book.dateOfPublication);
     body = body.set("pages", String(book.pages));
     body = body.set("isbn", book.isbn.trim());
     body = body.set("image", book.image.trim());
@@ -28,7 +28,7 @@ export class BookService {
     let body = new HttpParams();
     body = body.set("title", book.title.trim());
     body = body.set("author", book.author.trim());
-    body = body.set("dateOfPublication", book.title.trim());
+    body = body.set("dateOfPublication", book.dateOfPublication);
     body = body.set("pages", String(book.pages));
     body = body.set("isbn", book.isbn.trim());
     body = body.set("image", book.image.trim());

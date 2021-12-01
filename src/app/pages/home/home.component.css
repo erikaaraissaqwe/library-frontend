@@ -1,3 +1,4 @@
+
 .add-padding{
     padding: 50px;
 }
@@ -5,4 +6,65 @@
 .change-width{
     width: 320px;
     height: 560px;
+}
+
+@media(max-width: 768px) {
+    .change-width{
+        width: 300px;
+    }
+    .add-padding{
+        display: grid;
+    }
+}
+
+.is-text-overflow {
+    max-width: 230px;
+    display: block;
+    text-overflow: ellipsis;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    height: 29px;
+}
+
+.tooltipContainer {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+.tooltipContainer .tooltip {
+visibility: hidden;
+width: 130px;
+background-color: blue;
+color: #fff;
+text-align: left;
+border-radius: 6px;
+padding: 5px 10px;
+position: absolute;
+z-index: 1;
+bottom: 160%;
+left: 100%;
+margin-left: -140px;
+opacity: 0;
+transition: opacity 1s;
+}
+
+.tooltipContainer .tooltip::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -15px;
+border-width: 15px;
+border-style: solid;
+border-color: #555 transparent transparent transparent;
+}
+
+.tooltipContainer:hover .tooltip {
+visibility: visible;
+opacity: 1;
+}
+
+span{
+    cursor: pointer;
 }

@@ -3,19 +3,24 @@
 
 <div class="columns is-multiline is-centered add-padding">
     <div class="column is-one-third change-width" *ngFor="let b of listAllBooks">
-        <div class="card is-half">
+        <div class="card is-half
+        is-offset-one-quarter">
             <div class="card-image">
               <figure class="image is-2by3">
-                <img [src]="b.image">
+                <a routerLink="/detailsBook/{{b._id}}">
+                  <img [src]="b.image">
+                </a>
               </figure>
             </div>
             <div class="card-content">
+              <routerLink routerLink="/detailsBook/{{b._id}}">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4">{{b.title}}</p>
-                  <p class="subtitle is-6">{{b.author}}</p>
-                </div>
+                  <p class="title is-4 is-text-overflow" [attr.data-tooltip]="b.title">{{b.title | titleBook}}</p>
+                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom" [attr.data-tooltip]="b.author">{{b.author | titleBook}}</p>
+                </div>                
               </div>
+              </routerLink>
             </div>
           </div>
     </div>

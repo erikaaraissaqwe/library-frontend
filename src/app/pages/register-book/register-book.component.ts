@@ -70,6 +70,7 @@ export class RegisterBookComponent implements OnInit {
         .register(newBook)
         .subscribe(
           (data) => {
+            console.log(data);
             alert("cadastrado com sucesso")
             this.router.navigate(['/home']);
           },

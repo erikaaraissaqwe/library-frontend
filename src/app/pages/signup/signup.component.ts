@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit {
         .signIn(newUser)
         .subscribe(
           (data) => {
+            console.log(data);
             this.router.navigate(['/home']);
           },
           (err) => {
