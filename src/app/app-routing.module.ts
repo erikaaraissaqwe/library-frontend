@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterBookComponent } from './pages/register-book/register-book.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'registerBook', component: RegisterBookComponent, canActivate: [AuthGuard] },
   { path: 'detailsBook/:id', component: DetailsBookComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
+  { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home' },
 ];
 
