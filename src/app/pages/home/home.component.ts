@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { Book } from 'src/app/models/Book';
 import { User } from 'src/app/models/User';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +12,25 @@ import { User } from 'src/app/models/User';
 })
 export class HomeComponent implements OnInit {
 
+  listAllBooks: Book[];
   @Input() user: User;
   // @Output() userLogout = new EventEmitter();
   
   ngOnInit(): void {
+    this.loadBooks();
   }
 
-  constructor() { }
+  loadBooks(): void {
+    this.bookService.listAll().pipe(first()).subscribe(
+     (books) => {
+      this.listAllBooks = books["data"];
+     }
+    );
+  }
+
+  constructor( 
+    private router: Router,
+    private bookService: BookService) { }
 
 
 }

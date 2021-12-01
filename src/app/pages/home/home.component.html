@@ -1,2 +1,23 @@
 <app-navbar-admin></app-navbar-admin>
 <!-- <app-navbar></app-navbar> -->
+
+<div class="columns is-multiline is-centered add-padding">
+    <div class="column is-one-third change-width" *ngFor="let b of listAllBooks">
+        <div class="card is-half">
+            <div class="card-image">
+              <figure class="image is-2by3">
+                <img [src]="b.image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">{{b.title}}</p>
+                  <p class="subtitle is-6">{{b.author}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+</div>

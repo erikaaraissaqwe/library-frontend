@@ -15,7 +15,7 @@ export class BookService {
   register(book: Book): Observable<any> {
     let body = new HttpParams();
     body = body.set("title", book.title.trim());
-    body = body.set("authors", JSON.stringify(book.authors));
+    body = body.set("author", book.author.trim());
     body = body.set("dateOfPublication", book.title.trim());
     body = body.set("pages", String(book.pages));
     body = body.set("isbn", book.isbn.trim());
@@ -27,7 +27,7 @@ export class BookService {
   update(book: Book, id: string): Observable<any> {
     let body = new HttpParams();
     body = body.set("title", book.title.trim());
-    body = body.set("authors", JSON.stringify(book.authors));
+    body = body.set("author", book.author.trim());
     body = body.set("dateOfPublication", book.title.trim());
     body = body.set("pages", String(book.pages));
     body = body.set("isbn", book.isbn.trim());
@@ -38,7 +38,8 @@ export class BookService {
   }
 
   listAll(): Observable<Book[]>{
-    return this.http.get<Book[]>(this.backendUrl + "listAll");
+    console.log(this.backendUrl + "listAll");
+    return this.http.get<any>(this.backendUrl + "listAll");
   }
 
   listOne(id: string): Observable<Book>{

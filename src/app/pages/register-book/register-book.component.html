@@ -54,28 +54,28 @@
               </div>
   
               <div class="field">
-                <label for="authors" class="label">Autor:</label>
+                <label for="author" class="label">Autor:</label>
                 <div class="control">
                   <input
-                    id="authors"
+                    id="author"
                     class="input"
                     [ngClass]="{
                       'is-danger':
-                        registerForm.get('authors').dirty &&
-                        !registerForm.get('authors').valid
+                        registerForm.get('author').dirty &&
+                        !registerForm.get('author').valid
                     }"
                     type="text"
-                    formControlName="authors"
+                    formControlName="author"
                   />
                 </div>
                 <p
                   *ngIf="
-                    registerForm.get('authors').dirty &&
-                    !registerForm.get('authors').valid
+                    registerForm.get('author').dirty &&
+                    !registerForm.get('author').valid
                   "
                   class="help is-danger"
                 >
-                  {{ registerForm.get("authors").errors | errorForm: "Autor" }}
+                  {{ registerForm.get("author").errors | errorForm: "Autor" }}
                 </p>
               </div>
               <div class="group">

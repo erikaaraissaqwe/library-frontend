@@ -29,7 +29,7 @@ export class RegisterBookComponent implements OnInit {
   initForm() {
     this.registerForm = new FormGroup({
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      authors: new FormControl("", [Validators.required]),
+      author: new FormControl("", [Validators.required]),
       dateOfPublication: new FormControl("", [
         Validators.required,
       ]),
@@ -58,7 +58,7 @@ export class RegisterBookComponent implements OnInit {
       this.isLoading = true;
       const newBook = {
         title: this.registerForm.get('title').value,
-        authors: this.registerForm.get('authors').value,
+        author: this.registerForm.get('author').value,
         dateOfPublication: this.registerForm.get('dateOfPublication').value,
         pages: this.registerForm.get('pages').value,
         isbn: this.registerForm.get('isbn').value,
