@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
   }
 
   onCheckChange(event){
-    console.log(event.target.checked);
     if(event.target.checked){
       this.isAdm = true;
       this.title = "Login - Administrador";

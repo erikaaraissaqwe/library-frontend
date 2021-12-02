@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Book } from 'src/app/models/Book';
 import { User } from 'src/app/models/User';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { BookService } from 'src/app/services/book.service';
 export class HomeComponent implements OnInit {
 
   listAllBooks: Book[];
+  isAdmin = this.authService.isAdmin();
   @Input() user: User;
   // @Output() userLogout = new EventEmitter();
   
@@ -30,7 +32,9 @@ export class HomeComponent implements OnInit {
 
   constructor( 
     private router: Router,
-    private bookService: BookService) { }
+    private bookService: BookService,
+    private authService: AuthenticationService
+  ) { }
 
 
 }

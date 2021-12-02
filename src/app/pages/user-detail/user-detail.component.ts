@@ -24,7 +24,6 @@ export class UserDetailComponent implements OnInit {
   getAluno(id: string): void {
     this.Userservice.listOne(id).pipe(first()).subscribe(
       (User) => {
-        console.log(User);
         this.userSelecionado = User;
       },
       (err) => {
@@ -32,6 +31,7 @@ export class UserDetailComponent implements OnInit {
     }
   );
 }
+
 excluir(user: User) : void{
   let id = user._id;
     this.Userservice.delete(id).subscribe(

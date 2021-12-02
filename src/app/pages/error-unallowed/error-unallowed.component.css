@@ -1,0 +1,15 @@
+img {
+    width: 30%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+}
+
+a {
+    font-size: 30px;
+    text-decoration: none;
+}

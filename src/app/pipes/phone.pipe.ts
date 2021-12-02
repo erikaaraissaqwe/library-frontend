@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PhonePipe implements PipeTransform {
 
   transform(valor: string): string {
-    console.log(valor)
     const regex = /^[0-9]+$/;
     if(regex.test(valor)){
       if(valor.length >= 8){

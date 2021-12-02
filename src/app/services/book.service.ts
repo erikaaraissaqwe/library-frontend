@@ -39,7 +39,6 @@ export class BookService {
   }
 
   listAll(): Observable<Book[]>{
-    console.log(this.backendUrl + "listAll");
     return this.http.get<any>(this.backendUrl + "listAll");
   }
 

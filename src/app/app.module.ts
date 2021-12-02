@@ -23,6 +23,7 @@ import { DatePipe } from './pipes/date.pipe';
 import { ErrorComponent } from './pages/error/error.component';
 import { AuthorBookPipe } from './pipes/author-book.pipe';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     DatePipe,
     ErrorComponent,
     AuthorBookPipe,
-    PerfilComponent
+    PerfilComponent,
+    ErrorUnallowedComponent
   ],
   imports: [
     BrowserModule,

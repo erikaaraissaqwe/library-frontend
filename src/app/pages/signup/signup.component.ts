@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    console.log(this.formSignup.get("phoneNumber").errors);
   }
 
   initForm() {
@@ -62,7 +61,6 @@ export class SignupComponent implements OnInit {
         .signIn(newUser)
         .subscribe(
           (data) => {
-            console.log(data);
             this.router.navigate(['/home']);
           },
           (err) => {

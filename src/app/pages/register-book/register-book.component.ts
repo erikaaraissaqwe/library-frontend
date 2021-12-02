@@ -125,7 +125,6 @@ export class RegisterBookComponent implements OnInit {
         .register(newBook)
         .subscribe(
           (data) => {
-            console.log(data);
             alert("Cadastrado com sucesso")
             this.router.navigate(['/home']);
           },
@@ -141,7 +140,6 @@ export class RegisterBookComponent implements OnInit {
         .update(newBook, this.book._id)
         .subscribe(
           (data) => {
-            console.log(data);
             alert("Atualizado com sucesso")
             this.router.navigate(['/home']);
           },

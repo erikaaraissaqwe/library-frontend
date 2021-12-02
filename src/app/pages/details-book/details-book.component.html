@@ -25,7 +25,7 @@
         <div class="content">
           <p>{{book?.resume}}</p>
         </div>
-        <div class="media">
+        <div class="media" *ngIf="isAdmin">
           <div class="media-content" id='buttons'>
            <button class="button is-primary is-medium" routerLink="/updateBook/{{book?._id}}">
               Editar
@@ -33,7 +33,15 @@
            <app-button-back class="button is-warning is-medium"></app-button-back>
            <button class="button is-danger is-medium" (click)="delete(book?._id, book?.title)">
             Remover
-         </button>
+           </button>
+          </div>                
+        </div>
+        <div class="media" *ngIf="!isAdmin">
+          <div class="media-content" id='buttons'>
+           <button class="button is-primary is-medium">
+              Pegar emprestado
+           </button>
+           <app-button-back class="button is-warning is-medium"></app-button-back>
           </div>                
         </div>
       </div>

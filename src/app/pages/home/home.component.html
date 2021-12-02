@@ -1,5 +1,5 @@
-<app-navbar-admin></app-navbar-admin>
-<!-- <app-navbar></app-navbar> -->
+<app-navbar-admin *ngIf="isAdmin"></app-navbar-admin>
+<app-navbar *ngIf="!isAdmin"></app-navbar>
 
 <div class="columns is-multiline is-centered add-padding">
     <div class="column is-one-third change-width" *ngFor="let b of listAllBooks">

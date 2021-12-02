@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,20 +10,12 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
-  isMenuMobileOn = false;
-  tabSwitch = true;
-  isModalActive = false;
-  newEventModal = false;
 
-  @Input() user: User;
-  // @Output() userLogout = new EventEmitter();
-
-  constructor(private route: ActivatedRoute) {
-    route.queryParams.subscribe(param => {
-      this.tabSwitch = param.estado === 'finalizados';
-    });
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -38,21 +31,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  toggleMobileMenu(): void {
-    this.isMenuMobileOn = !this.isMenuMobileOn;
-  }
-
-  toggleModal(state: boolean): void {
-    this.newEventModal = state;
-    this.isModalActive = state;
-  }
-
-  updateList(e: boolean): void {
-    if (e) {
-      window.location.reload();
-    }
-    else {
-      this.isModalActive = false;
-    }
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(["/login"]);
   }
 }

@@ -11,7 +11,8 @@ export class NavbarAdminComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

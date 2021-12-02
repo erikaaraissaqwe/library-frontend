@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
+    if(this.authenticationService.isAdmin){
+      this.router.navigate(["/error405"]);
+    }
   }
 
 }

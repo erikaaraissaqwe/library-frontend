@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Alert } from 'selenium-webdriver';
 import { Book } from 'src/app/models/Book';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -13,22 +14,23 @@ import { BookService } from 'src/app/services/book.service';
 export class DetailsBookComponent implements OnInit {
 
   book: Book;
-
+  isAdmin = this.authService.isAdmin();
+  
   constructor(
     private router: Router,
     private bookService: BookService,
-    private routerActivated: ActivatedRoute,) { }
+    private routerActivated: ActivatedRoute,
+    private authService: AuthenticationService
+  ) { }
 
     ngOnInit(): void {
     let id = this.routerActivated.snapshot.paramMap.get("id");
-    console.log(id);
     this.loadBook(id);
   }
 
   loadBook(id: string): void {
     this.bookService.listOne(id).pipe(first()).subscribe(
      (book) => {
-       console.log(book);
         this.book = book;
      },
      (err) => {
@@ -42,7 +44,6 @@ export class DetailsBookComponent implements OnInit {
       this.bookService.delete(id).subscribe(
         (res) => {
         if (res.ok) {
-          console.log(res);
           alert("O livro foi deletado com sucesso");
           this.router.navigate(["/home"]);
         }

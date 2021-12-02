@@ -10,7 +10,6 @@ export class UserService {
   backendUrl = "http://localhost:8080/api/user/";
 
   listAll(): Observable<User[]>{
-    console.log(this.backendUrl + "listAll");
     return this.http.get<any>(this.backendUrl + "listAll");
   }
 
