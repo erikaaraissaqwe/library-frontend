@@ -8,7 +8,7 @@
             <div class="card-image">
               <figure class="image is-2by3">
                 <a routerLink="/detailsBook/{{b._id}}">
-                  <img [src]="b.image">
+                  <img [src]="b?.image">
                 </a>
               </figure>
             </div>
@@ -16,8 +16,8 @@
               <routerLink routerLink="/detailsBook/{{b._id}}">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4 is-text-overflow" [attr.data-tooltip]="b.title">{{b.title | titleBook}}</p>
-                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom" [attr.data-tooltip]="b.author">{{b.author | authorBook}}</p>
+                  <p class="title is-4 is-text-overflow" [attr.data-tooltip]="b?.title">{{b?.title | titleBook}}</p>
+                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom" [attr.data-tooltip]="b?.author">{{b?.author | authorBook}}</p>
                 </div>                
               </div>
               </routerLink>

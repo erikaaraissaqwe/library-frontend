@@ -140,8 +140,8 @@ export class RegisterBookComponent implements OnInit {
         .update(newBook, this.book._id)
         .subscribe(
           (data) => {
-            alert("Atualizado com sucesso")
-            this.router.navigate(['/home']);
+            alert("Atualizado com sucesso.");
+            this.router.navigate(['/detailsBook/' + this.book._id]);
           },
           (err) => {
             this.msgServerError = err.error.msg;
