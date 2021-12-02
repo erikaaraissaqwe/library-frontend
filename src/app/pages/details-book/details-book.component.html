@@ -1,50 +1,42 @@
 <app-navbar-admin></app-navbar-admin>
-<!-- <app-navbar></app-navbar> -->
 
-<div class="columns is-multiline is-centered add-padding">
-    <div class="column is-one-third change-width">
-        <div class="card is-half
-        is-offset-one-quarter">
-            <div class="card-image">
-              <figure class="image is-1by1">
-                <a>
-                  <img [src]="book.image">
-                </a>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4 is-text-overflow">Título: {{book.title}}</p>
-                  <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Autor: {{book.author}}</p>
-                </div>
-                </div>
-              <div class="media">
-                <div class="media-content">
-                    <p class="title is-4 is-text-overflow">ISBN: {{book.isbn}}</p>
-                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Páginas: {{book.pages}}</p>
-                    <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Data da publicação: {{book.dateOfPublication}}</p>
-                </div>                
-              </div>
-
-              <div class="media">
-                <div class="media-content">
-                 <button class="button is-primary  is-fullwidth" routerLink="/updateBook/{{book._id}}">
-                    Editar
-                 </button>
-                 <br>
-                 <app-button-back></app-button-back>
-                 <br>
-                 <button class="button is-danger is-fullwidth" (click)="delete(book._id, book.title)">
-                  Remover
-               </button>
-                </div>                
-              </div>
-
-              
-            </div>
+<div class="container">
+  <div class="section">
+    <div class="card is-horizontal columns">
+      <div class="card-image column is-one-third" id="image-display">
+        <figure class="image is-1by1">
+          <img id="capa" [src]="book?.image">             
+        </figure>
+      </div>
+      <div class="card-content column is-two-third">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4 is-text-overflow">Título: {{book?.title}}</p>
+            <p class="subtitle is-6 is-text-overflow has-tooltip-bottom">Autor: {{book?.author}}</p>
           </div>
+        </div>
+        <div class="media">
+          <div class="media-content">
+              <p class="is-6 is-text-overflow">ISBN: {{book?.isbn}}</p>
+              <p class="is-6 is-text-overflow has-tooltip-bottom">Páginas: {{book?.pages}}</p>
+              <p class="is-6 is-text-overflow has-tooltip-bottom">Data da publicação: {{book?.dateOfPublication | date }}</p>
+          </div>                
+        </div>
+        <div class="content">
+          <p>{{book?.resume}}</p>
+        </div>
+        <div class="media">
+          <div class="media-content" id='buttons'>
+           <button class="button is-primary is-medium" routerLink="/updateBook/{{book?._id}}">
+              Editar
+           </button>
+           <app-button-back class="button is-warning is-medium"></app-button-back>
+           <button class="button is-danger is-medium" (click)="delete(book?._id, book?.title)">
+            Remover
+         </button>
+          </div>                
+        </div>
+      </div>
     </div>
 </div>
-
-
+</div>

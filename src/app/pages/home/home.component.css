@@ -4,8 +4,8 @@
 }
 
 .change-width{
-    width: 320px;
-    height: 560px;
+    width: 280px;
+    height: 300px;
 }
 
 @media(max-width: 768px) {
@@ -21,9 +21,7 @@
     max-width: 230px;
     display: block;
     text-overflow: ellipsis;
-    /* overflow: hidden; */
     white-space: nowrap;
-    height: 29px;
 }
 
 .tooltipContainer {

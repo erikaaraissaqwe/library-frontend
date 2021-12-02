@@ -8,8 +8,8 @@ import { User } from '../models/User';
 })
 export class AuthenticationService {
 
-  userBackendUrl = "http://localhost:8085/api/user";
-  admBackendUrl = "http://localhost:8085/api/admin";
+  userBackendUrl = "http://localhost:8080/api/user";
+  admBackendUrl = "http://localhost:8080/api/admin";
 
   constructor(private http: HttpClient) {}
 

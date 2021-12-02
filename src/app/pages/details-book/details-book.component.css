@@ -1,0 +1,20 @@
+#capa{
+    width: 300px;
+    height: auto;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+@media(max-width: 768px) {
+    #image-display{
+        display: none;
+    }
+    .button{
+        width: 80px;
+        font-size: 0.7rem;
+    }
+}

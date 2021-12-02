@@ -32,7 +32,7 @@ export class DetailsBookComponent implements OnInit {
         this.book = book;
      },
      (err) => {
-      alert(err.error.msg);
+      this.router.navigate(["/error"]);
       }
     );
   }

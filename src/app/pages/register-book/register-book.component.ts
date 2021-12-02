@@ -46,9 +46,13 @@ export class RegisterBookComponent implements OnInit {
   setBookForUpdate(id: string): void {
     this.bookService.listOne(id).subscribe(
       (book) => {
-      this.book = book;
-      this.setCurso(this.book);
-    });
+        this.book = book;
+        this.setCurso(this.book);
+      },
+      (err) => {
+        this.router.navigate(["/error"]);
+     }
+   );
   }
 
   setCurso(book: Book): void {

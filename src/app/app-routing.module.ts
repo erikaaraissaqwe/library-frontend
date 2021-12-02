@@ -8,6 +8,7 @@ import { RegisterBookComponent } from './pages/register-book/register-book.compo
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'home' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "**", component: ErrorComponent },
+  { path: "error", component: ErrorComponent },
 ];
 
 @NgModule({
