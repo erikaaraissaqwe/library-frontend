@@ -19,6 +19,7 @@ import { TitleBookPipe } from './pipes/title-book.pipe';
 import { DetailsBookComponent } from './pages/details-book/details-book.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
     DetailsBookComponent,
     UserListComponent,
     UserDetailComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

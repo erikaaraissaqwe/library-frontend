@@ -24,7 +24,23 @@ export class UserListComponent implements OnInit {
       this.listAllUsers = books["data"];
      }
     );
+    
    
   }
+  excluir(user: User) : void{
+    let id = user._id;
+      this.UserService.delete(id).subscribe(
+        (res) => {
+        if (res.ok) {
+          alert("O usuário foi deletado com sucesso");
+          this.loadBooks();
+        }
+      },
+      (err) => {
+        alert(err.error.msg);
+      }
+      );
+  }
+ 
 
 }

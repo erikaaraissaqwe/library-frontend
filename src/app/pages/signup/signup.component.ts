@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
     if (this.formSignup.valid) {
       this.isLoading = true;
       const newUser = {
-        id: "",
+        _id: "",
         name: this.formSignup.get('name').value,
         email: this.formSignup.get('email').value,
         password: this.formSignup.get('newPassword').value,

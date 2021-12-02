@@ -6,9 +6,9 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4" routerLink="/userDetail">{{b.name}}</p>
+                  <p class="title is-4" routerLink="/userDetail/{{b._id}}">{{b.name}}</p>
                   <p class="subtitle is-6">{{b.email}}</p>
-                  <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                  <button type="button" (click)="excluir(b)"class="btn btn-outline-secondary">Excluir</button>
                 </div>
               </div>
             </div>
