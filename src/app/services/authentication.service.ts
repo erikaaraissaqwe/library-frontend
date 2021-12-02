@@ -9,8 +9,8 @@ import { User } from '../models/User';
 })
 export class AuthenticationService {
 
-  userBackendUrl = "http://localhost:8080/api/user";
-  admBackendUrl = "http://localhost:8080/api/admin";
+  userBackendUrl = "http://localhost:8085/api/user";
+  admBackendUrl = "http://localhost:8085/api/admin";
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -38,6 +38,8 @@ export class AuthenticationService {
           if(res.body.token && res.body.data._id && res.body.expiresIn){
             sessionStorage.setItem("token", res.body.token);
             sessionStorage.setItem("expiresIn", res.body.expiresIn);
+            sessionStorage.setItem("id", res.body.data._id);
+        
             if(isAdm){
               localStorage.setItem("admin", JSON.stringify(res.body.data));
               user.admin = true;

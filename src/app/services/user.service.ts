@@ -7,7 +7,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
-  backendUrl = "http://localhost:8080/api/user/";
+  backendUrl = "http://localhost:8085/api/user/";
 
   listAll(): Observable<User[]>{
     return this.http.get<any>(this.backendUrl + "listAll");

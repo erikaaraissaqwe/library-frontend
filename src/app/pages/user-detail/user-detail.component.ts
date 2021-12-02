@@ -21,7 +21,7 @@ export class UserDetailComponent implements OnInit {
   userSelecionado : any;
   id = this.rota.snapshot.paramMap.get("id");
   
-  getAluno(id: string): void {
+  getUser(id: string): void {
     this.Userservice.listOne(id).pipe(first()).subscribe(
       (User) => {
         this.userSelecionado = User;
@@ -47,7 +47,7 @@ excluir(user: User) : void{
     );
 }
   ngOnInit(): void {
-    this.getAluno(this.id);
+    this.getUser(this.id);
   }
 
 }

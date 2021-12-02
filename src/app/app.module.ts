@@ -24,6 +24,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { AuthorBookPipe } from './pipes/author-book.pipe';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
+import { ButtonEditComponent } from './components/button-edit/button-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed
     ErrorComponent,
     AuthorBookPipe,
     PerfilComponent,
-    ErrorUnallowedComponent
+    ErrorUnallowedComponent,
+    ButtonEditComponent,
+
   ],
   imports: [
     BrowserModule,
