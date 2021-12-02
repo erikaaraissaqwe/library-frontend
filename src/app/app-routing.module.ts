@@ -9,6 +9,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuard] },
+  { path: 'userDetail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "**", component: ErrorComponent },
   { path: "error", component: ErrorComponent },

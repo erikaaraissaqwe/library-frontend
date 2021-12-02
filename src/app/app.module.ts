@@ -22,6 +22,7 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { DatePipe } from './pipes/date.pipe';
 import { ErrorComponent } from './pages/error/error.component';
 import { AuthorBookPipe } from './pipes/author-book.pipe';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthorBookPipe } from './pipes/author-book.pipe';
     DatePipe,
     ErrorComponent,
     AuthorBookPipe,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

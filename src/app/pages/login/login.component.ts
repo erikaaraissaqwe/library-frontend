@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     if (this.formLogin.valid) {
       this.isLoading = true;
       const user: User  = {
-        id: "",
+        _id: "",
         email: this.formLogin.get('email').value,
         password: this.formLogin.get('password').value,
         admin: this.isAdm,
