@@ -12,21 +12,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor( private router: Router,
+  constructor(
+    private router: Router,
     private rota : ActivatedRoute,
-    private Userservice: UserService ) { }
+    private Userservice: UserService
+  ) { }
 
   userSelecionado : any;
- id = this.rota.snapshot.paramMap.get("id");
+  id = this.rota.snapshot.paramMap.get("id");
   
- getAluno(id: string): void {
-  this.Userservice.listOne(id).pipe(first()).subscribe(
-   (User) => {
-     console.log(User);
-      this.userSelecionado = User;
-   },
-   (err) => {
-    alert(err.error.msg);
+  getAluno(id: string): void {
+    this.Userservice.listOne(id).pipe(first()).subscribe(
+      (User) => {
+        console.log(User);
+        this.userSelecionado = User;
+      },
+      (err) => {
+      alert(err.error.msg);
     }
   );
 }

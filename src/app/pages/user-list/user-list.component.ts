@@ -11,14 +11,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+
   listAllUsers: User[];
-  constructor( private router: Router,
-    private UserService: UserService) { }
+
+  constructor(
+    private router: Router,
+    private UserService: UserService
+  ) { }
+
   ngOnInit(): void {
-    this.loadBooks();
+    this.loadUser();
   }
   
-  loadBooks(): void {
+  loadUser(): void {
     this.UserService.listAll().pipe(first()).subscribe(
      (books) => {
       this.listAllUsers = books["data"];
@@ -33,7 +38,7 @@ export class UserListComponent implements OnInit {
         (res) => {
         if (res.ok) {
           alert("O usuário foi deletado com sucesso");
-          this.loadBooks();
+          this.loadUser();
         }
       },
       (err) => {
@@ -41,6 +46,4 @@ export class UserListComponent implements OnInit {
       }
       );
   }
- 
-
 }
