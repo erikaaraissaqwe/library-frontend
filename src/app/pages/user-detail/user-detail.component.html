@@ -9,7 +9,7 @@
                   <p class="title is-4">{{userSelecionado?.name}}</p>
                   <p class="subtitle is-6">{{userSelecionado?._id}}</p>
                   <p class="subtitle is-6">{{userSelecionado?.email}}</p>
-                  <p class="subtitle is-6">{{userSelecionado?.phone}}</p>
+                  <p class="subtitle is-6">{{userSelecionado?.phone | phone}}</p>
                   <button type="button" (click)="excluir(userSelecionado)" class="button is-danger is-fullwidth">Excluir</button>
                   <br>
                   <app-button-back></app-button-back>                 

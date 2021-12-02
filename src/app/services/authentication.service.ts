@@ -63,7 +63,7 @@ export class AuthenticationService {
           if(res.body.token && res.body.data._id && res.body.expiresIn){
             sessionStorage.setItem("token", res.body.token);
             sessionStorage.setItem("expiresIn", res.body.expiresIn);
-            localStorage.setItem("user", res.body.data);
+            localStorage.setItem("user", JSON.stringify(res.body.data));
           }
           return res;
         }
@@ -78,7 +78,6 @@ export class AuthenticationService {
   }
 
   isLogged(): boolean {
-    this.isAdmin();
     if (sessionStorage.getItem("token") != null && sessionStorage.getItem("expiresIn") != null){
       if(parseInt(sessionStorage.getItem("expiresIn")) > Date.now()){
         return true;

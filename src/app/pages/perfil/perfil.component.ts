@@ -15,7 +15,7 @@ export class PerfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.authenticationService.isAdmin){
+    if(this.authenticationService.isAdmin()){
       this.router.navigate(["/error405"]);
     }
   }
