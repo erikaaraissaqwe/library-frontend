@@ -12,7 +12,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { AuthGuardAdmin } from './helpers/authAdmin.guard';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
-
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,11 +24,13 @@ const routes: Routes = [
   { path: 'userList', component: UserListComponent, canActivate: [AuthGuardAdmin] },
   { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuardAdmin] },
   { path: 'userDetail/:id', component: UserDetailComponent, canActivate: [AuthGuardAdmin] },
+  { path: "edit", component: UserEditComponent },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "error405", component: ErrorUnallowedComponent },
   { path: "**", component: ErrorComponent },
-  { path: "error", component: ErrorComponent },
+  { path: "error", component: ErrorComponent }
+  
 ];
 
 @NgModule({

@@ -25,6 +25,7 @@ import { AuthorBookPipe } from './pipes/author-book.pipe';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
 import { ButtonEditComponent } from './components/button-edit/button-edit.component';
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ButtonEditComponent } from './components/button-edit/button-edit.compon
     PerfilComponent,
     ErrorUnallowedComponent,
     ButtonEditComponent,
+    UserEditComponent,
 
   ],
   imports: [
