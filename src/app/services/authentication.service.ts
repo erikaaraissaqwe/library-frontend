@@ -66,6 +66,7 @@ export class AuthenticationService {
             sessionStorage.setItem("token", res.body.token);
             sessionStorage.setItem("expiresIn", res.body.expiresIn);
             localStorage.setItem("user", JSON.stringify(res.body.data));
+            sessionStorage.setItem("id", res.body.data._id);
           }
           return res;
         }
@@ -75,6 +76,7 @@ export class AuthenticationService {
   logout() {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("expiresIn");
+    sessionStorage.removeItem("id");
     localStorage.removeItem("user");
     localStorage.removeItem("admin");
   }

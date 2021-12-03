@@ -18,15 +18,14 @@ export class HomeComponent implements OnInit {
   @Input() user: User;
   
   ngOnInit(): void {
-    this.loadBooks();
-
-    if (this.router.url === '/home'){
+    if (this.router.url == '/home'){
      this.loadBooks();
     }
-    else if (this.router.url === '/bookBorrowed'){
-     this.loadBooksBorrowed();
+    else if (this.router.url == '/bookBorrowed'){
+      this.loadBooksBorrowed();
     }
   }
+
 
   loadBooks(): void {
     this.bookService.listAll().pipe(first()).subscribe(
