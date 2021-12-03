@@ -5,6 +5,7 @@ import { Alert } from 'selenium-webdriver';
 import { Book } from 'src/app/models/Book';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BookService } from 'src/app/services/book.service';
+import { BookUserService } from 'src/app/services/book-user.service';
 
 @Component({
   selector: 'app-details-book',
@@ -12,7 +13,7 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./details-book.component.css']
 })
 export class DetailsBookComponent implements OnInit {
-
+  bookUser = {bookId : "", userId: "", loadDate: "", expectedDeliveryDate: "", actualDeliveryDate: "", timestamps: true};
   book: Book;
   isAdmin = this.authService.isAdmin();
   
@@ -20,7 +21,8 @@ export class DetailsBookComponent implements OnInit {
     private router: Router,
     private bookService: BookService,
     private routerActivated: ActivatedRoute,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private BookUserService: BookUserService
   ) { }
 
     ngOnInit(): void {
@@ -38,7 +40,17 @@ export class DetailsBookComponent implements OnInit {
       }
     );
   }
+emprestar(idBook:string){
+  let id = sessionStorage.getItem("id");
+  this.bookUser.bookId = idBook;
+  this.bookUser.userId = id;
+  this.bookUser.loadDate = String(new Date());
+  this.bookUser.expectedDeliveryDate = "";
+  this.bookUser.actualDeliveryDate = "";
 
+  this.BookUserService.register(this.bookUser);
+  console.log(this);
+}
   delete(id: string, title: string) {
     if (confirm("Remover "+ title +"?")) {
       this.bookService.delete(id).subscribe(
