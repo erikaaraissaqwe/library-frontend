@@ -13,6 +13,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { AuthGuardAdmin } from './helpers/authAdmin.guard';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,12 +22,13 @@ const routes: Routes = [
   { path: 'detailsBook/:id', component: DetailsBookComponent, canActivate: [AuthGuard] },
   { path: 'updateBook/:id', component: RegisterBookComponent, canActivate: [AuthGuardAdmin] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'bookBorrowed', component: HomeComponent, canActivate: [AuthGuardAdmin] },
+  { path: 'bookBorrowed', component: EmprestimosComponent, canActivate: [AuthGuardAdmin] },
   { path: 'userList', component: UserListComponent, canActivate: [AuthGuardAdmin] },
   { path: 'userDetail', component: UserDetailComponent, canActivate: [AuthGuardAdmin] },
   { path: 'userDetail/:id', component: UserDetailComponent, canActivate: [AuthGuardAdmin] },
   { path: "edit", component: UserEditComponent },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
+ 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "error403", component: ErrorUnallowedComponent },
   { path: "**", component: ErrorComponent },

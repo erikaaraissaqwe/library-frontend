@@ -26,6 +26,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
 import { ButtonEditComponent } from './components/button-edit/button-edit.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { UserEditComponent } from './pages/user-edit/user-edit.component';
     ErrorUnallowedComponent,
     ButtonEditComponent,
     UserEditComponent,
+    EmprestimosComponent,
 
   ],
   imports: [
