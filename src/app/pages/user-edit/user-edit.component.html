@@ -11,47 +11,137 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <h3 class="title is-3 has-text-centered">{{user.name}}</h3>
+              <div
+              *ngIf="hasErrorServer"
+              class="notification is-danger is-light"
+              >
+              <button
+                class="delete"
+                (click)="hasErrorServer = false"
+              ></button>
+              <span class="icon-text">
+                <span class="icon">
+                  <fa-icon [icon]="faExclamationCircle"></fa-icon>
+                </span>
+                <span>{{ msgServerError }}</span>
+              </span>
+            </div>
+              <h3 class="title is-3 has-text-centered">Edite seu usuário</h3>
             
  
             </div>
               <form [formGroup]="myForm" (submit)="onSubmit()">
                 <div class="field">
-                  <label for="title" class="label">Nome:</label>
+
+                  <label for="name" class="label">Nome:</label>
                   <div class="control">
                     <input
                       id="name"
                       class="input"
+                      [ngClass]="{
+                        'is-danger':
+                        myForm.get('name').dirty &&
+                        !myForm.get('name').valid
+                      }"
                       type="text"
                       formControlName="name"
                     />
                   </div>
-                  <label for="title" class="label">Telefone:</label>
+                  <p
+                    *ngIf="
+                      myForm.get('name').dirty &&
+                      !myForm.get('name').valid
+                    "
+                    class="help is-danger"
+                  >
+                    {{ myForm.get("name").errors | errorForm: "Nome" }}
+                  </p>
+
+                  <label for="phone" class="label">Telefone:</label>
                   <div class="control">
                     <input
-                      id="phone"
+                      id="phoneNumber"
                       class="input"
+                      [ngClass]="{
+                        'is-danger':
+                        myForm.get('phoneNumber').dirty &&
+                        !myForm.get('phoneNumber').valid
+                      }"
                       type="text"
-                      formControlName="phone"
+                      formControlName="phoneNumber"
                     />
                   </div>
-                  <label for="title" class="label">Email:</label>
+                  <p
+                    *ngIf="
+                      myForm.get('phoneNumber').dirty &&
+                      !myForm.get('phoneNumber').valid
+                    "
+                      class="help is-danger"
+                    >
+                      {{ myForm.get("phoneNumber").errors | errorForm: "Telefone" }}
+                  </p>
+
+                  <label for="email" class="label">Email:</label>
                   <div class="control">
                     <input
                       id="email"
                       class="input"
+                      [ngClass]="{
+                        'is-danger':
+                        myForm.get('email').dirty &&
+                        !myForm.get('email').valid
+                      }"
                       type="text"
                       formControlName="email"
                     />
                   </div>
+                  <p
+                    *ngIf="
+                      myForm.get('email').dirty &&
+                      !myForm.get('email').valid
+                    "
+                      class="help is-danger"
+                    >
+                      {{ myForm.get("email").errors | errorForm: "E-mail" }}
+                  </p>
+
+                   <label for="password" class="label">Nova senha:</label>
+                  <div class="control">
+                    <input
+                      id="password"
+                      class="input"
+                        [ngClass]="{
+                          'is-danger':
+                          myForm.get('password').dirty &&
+                          !myForm.get('password').valid
+                        }"
+                      type="text"
+                      formControlName="password"
+                    />
+                  </div>
+                  <p
+                  *ngIf="
+                    myForm.get('password').dirty &&
+                    !myForm.get('password').valid
+                  "
+                    class="help is-danger"
+                  >
+                    {{ myForm.get("password").errors | errorForm: "A nova senha" }}
+                </p>
+
                   <br>
                 <div class="field">
                   <div class="control">
-                    <button class="button is-primary is-fullwidth"type="submit"> 
-                     Salvar
+                    <button 
+                    class="button is-primary is-fullwidth"
+                    [ngClass]="{ 'is-loading': isLoading }"
+                    [disabled]="!myForm.valid" 
+                    type="submit"> 
+                     Atualizar
                     </button>
                   </div>
                 </div>
+
                 <div class="field">
                   <div class="control">
                     <app-button-back></app-button-back>

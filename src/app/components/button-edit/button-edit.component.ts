@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
 })
 export class ButtonEditComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  constructor(
+    private router: Router
+  ) { }
+
   edit(): void {
     this.router.navigate(['/edit']);
   }
+  
   ngOnInit(): void {
   }
 

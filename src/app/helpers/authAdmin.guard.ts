@@ -21,7 +21,7 @@ export class AuthGuardAdmin implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/error405']);
+    this.router.navigate(['/error403']);
     return false;
   }
 }

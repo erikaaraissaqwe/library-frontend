@@ -10,7 +10,7 @@ import { Book } from '../models/Book';
 })
 export class BookService {
 
-  backendUrl = "http://localhost:8085/api/book/";
+  backendUrl = "http://localhost:3333/api/book/";
 
   register(book: Book): Observable<any> {
     let body = new HttpParams();
@@ -40,6 +40,10 @@ export class BookService {
 
   listAll(): Observable<Book[]>{
     return this.http.get<any>(this.backendUrl + "listAll");
+  }
+
+  listAllBorrowed(): Observable<Book[]>{
+    return this.http.get<any>(this.backendUrl + "listAllBorrowed");
   }
 
   listOne(id: string): Observable<Book>{

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Book } from 'src/app/models/Book';
 import { User } from 'src/app/models/User';
@@ -16,10 +16,16 @@ export class HomeComponent implements OnInit {
   listAllBooks: Book[];
   isAdmin = this.authService.isAdmin();
   @Input() user: User;
-  // @Output() userLogout = new EventEmitter();
   
   ngOnInit(): void {
     this.loadBooks();
+
+    if (this.router.url === '/home'){
+     this.loadBooks();
+    }
+    else if (this.router.url === '/bookBorrowed'){
+     this.loadBooksBorrowed();
+    }
   }
 
   loadBooks(): void {
@@ -30,8 +36,17 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  loadBooksBorrowed(): void {
+    this.bookService.listAllBorrowed().pipe(first()).subscribe(
+     (books) => {
+      this.listAllBooks = books["data"];
+     }
+    );
+  }
+
   constructor( 
     private router: Router,
+    private routerActivated: ActivatedRoute,
     private bookService: BookService,
     private authService: AuthenticationService
   ) { }

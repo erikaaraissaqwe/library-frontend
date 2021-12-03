@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -11,62 +12,85 @@ import { User } from 'src/app/models/User';
 })
 export class UserEditComponent implements OnInit {
   myForm: FormGroup;
+  user : User;
+  isLoading = false;
+  hasErrorServer = false;
+  msgServerError: string;
 
-  constructor( private Userservice: UserService) { }
-  userUpdate: User;
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.initForm();
     let id = sessionStorage.getItem("id");
     this.getUser(id);
-    this.initForm();
+   
   }
-  user : any;
+
   getUser(id: string): void {
-    this.Userservice.listOne(id).pipe(first()).subscribe(
+    this.userService.listOne(id).pipe(first()).subscribe(
       (User) => {
         this.user = User;
+        this.setUser(User);
       },
       (err) => {
-      alert(err.error.msg);
-    }
-  );
-}
+        alert(err.error.msg);
+      }
+    );
+  }
+
 private initForm() {
   this.myForm = new FormGroup({
-  name : new FormControl(null, [Validators.required, Validators.maxLength(1000)]),
-  phone : new FormControl(null, [Validators.required, Validators.min(18)]),
-  email : new FormControl(null)
+    name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    email: new FormControl({value: "", disabled: true}, [Validators.required, Validators.email]),
+    phoneNumber: new FormControl("", [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(13),
+      Validators.pattern('^[0-9]+$')
+    ]),
+    password: new FormControl("", [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(16),
+    ]),
   });
   }
-  onSubmit() : void {
-    console.log("Entrei");
 
-  
-      let id = sessionStorage.getItem("id");
-      this.user = this.getUser(id);
-      this.userUpdate.password = this.user.password;
-      this.userUpdate.admin = this.user.admin;
-      this.userUpdate._id = id;
-      console.log(this.getUser(id));
-      if(this.myForm.get("name").value != " "){
-        this.userUpdate.name = this.myForm.get("name").value;
-      }else{
-        this.userUpdate.name = this.user.name;
-      } if(this.myForm.get("phone").value != " "){
-        this.userUpdate.phone = this.myForm.get("phone").value;
-      }else{
-        this.userUpdate.phone = this.user.phone;
-      } if(this.myForm.get("email").value != " "){
-        this.userUpdate.email = this.myForm.get("email").value;
-      }else{
-        this.userUpdate.email = this.user.email;
-      }
-      
-      this.Userservice.update(this.userUpdate, id);
-     
+  setUser(user: User): void {
+    this.myForm.setValue({
+      name: user.name,
+      email: user.email,
+      phoneNumber: user.phone,
+      password: "",
+    });
+  }
+
+  onSubmit() : void {
+      const userUpdate = {
+        _id: this.user._id,
+        name: this.myForm.get('name').value,
+        email: this.user.email,
+        admin: false,
+        password:  this.myForm.get('password').value,
+        phone: this.myForm.get('phoneNumber').value,
+      };
     
+      this.userService.update(userUpdate,this.user._id).subscribe(
+        (data) => {
+          alert("Atualizado com sucesso.");
+          this.router.navigate(['/perfil']);
+        },
+        (err) => {
+          this.msgServerError = err.error.msg;
+          this.hasErrorServer = true;
+          this.isLoading = false;
+        }
+      );
     }
-    }
-    myForm: FormGroup;
+}
+   
 
 

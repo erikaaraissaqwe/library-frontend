@@ -1,4 +1,4 @@
-<app-navbar-admin></app-navbar-admin>
+<app-navbar-admin *ngIf="isAdmin"></app-navbar-admin>
 
 <div class="container">
   <div class="section">
@@ -20,6 +20,7 @@
               <p class="is-6 is-text-overflow">ISBN: {{book?.isbn}}</p>
               <p class="is-6 is-text-overflow has-tooltip-bottom">Páginas: {{book?.pages}}</p>
               <p class="is-6 is-text-overflow has-tooltip-bottom">Data da publicação: {{book?.dateOfPublication | date }}</p>
+              <p class="is-6 is-text-overflow">Disponível para empréstimo? {{book?.borrowed ? "Não" : "Sim"}}</p>
           </div>                
         </div>
         <div class="content">
@@ -38,7 +39,7 @@
         </div>
         <div class="media" *ngIf="!isAdmin">
           <div class="media-content" id='buttons'>
-           <button class="button is-primary is-medium">
+           <button class="button is-primary is-medium" *ngIf="!book?.borrowed">
               Pegar emprestado
            </button>
            <app-button-back class="button is-warning is-medium"></app-button-back>

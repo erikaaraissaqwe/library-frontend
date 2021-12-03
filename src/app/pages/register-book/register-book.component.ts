@@ -20,10 +20,12 @@ export class RegisterBookComponent implements OnInit {
   isUpdate = false;
   isBorrowed = false;
   title = "Cadastre um livro";
+  isAdmin = this.authService.isAdmin();
 
   constructor(
     private router: Router,
     private bookService: BookService,
+    private authService: AuthenticationService,
     private routerActivated: ActivatedRoute
   ) {
    
@@ -47,7 +49,7 @@ export class RegisterBookComponent implements OnInit {
     this.bookService.listOne(id).subscribe(
       (book) => {
         this.book = book;
-        this.setCurso(this.book);
+        this.setBook(this.book);
       },
       (err) => {
         this.router.navigate(["/error"]);
@@ -55,7 +57,7 @@ export class RegisterBookComponent implements OnInit {
    );
   }
 
-  setCurso(book: Book): void {
+  setBook(book: Book): void {
     this.registerForm.setValue({
       title: book.title,
       author: book.author,
