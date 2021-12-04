@@ -14,6 +14,7 @@ export class EmprestimosComponent implements OnInit {
   constructor( private BookUserService: BookUserService) { }
 
   ngOnInit(): void {
+    this.loadUser();
   }
   loadUser(): void {
     this.BookUserService.listAll().pipe(first()).subscribe(

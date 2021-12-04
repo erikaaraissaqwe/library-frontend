@@ -8,7 +8,7 @@ import { BookUser } from '../models/BokkUser';
 })
 export class BookUserService {
  
-  backendUrl: "http://localhost:8085/api/book/";
+  backendUrl: "http://localhost:8085/api/bookUser/";
 
    register(bookUser : BookUser): Observable<any> {
     let body = new HttpParams();
@@ -20,12 +20,12 @@ export class BookUserService {
     body = body.set("actualDeliveryDate", bookUser.actualDeliveryDate);
    
     console.log(bookUser);
-    return this.http.post<any>(this.backendUrl + "emprestimo", body, {observe: "response"});
+    return this.http.post<any>(this.backendUrl + "/emprestimo", body, {observe: "response"});
   }
   
 
   listAll(): Observable<BookUser[]>{
-    return this.http.get<any>(this.backendUrl + "todosEmprestimos");
+    return this.http.get<any>(this.backendUrl + "/bookBorrowed");
   }
 
   listOne(id: string): Observable<BookUser>{
