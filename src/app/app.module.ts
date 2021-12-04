@@ -26,6 +26,12 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ErrorUnallowedComponent } from './pages/error-unallowed/error-unallowed.component';
 import { ButtonEditComponent } from './components/button-edit/button-edit.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
+import { LivrosEmprestadosAdminComponent } from './pages/livros-emprestados-admin/livros-emprestados-admin.component';
+import { LivrosAtrasadosAdminComponent } from './pages/livros-atrasados-admin/livros-atrasados-admin.component';
+import { UserComLivrosComponent } from './pages/user-com-livros/user-com-livros.component';
+import { UserLivrosEmprestadosComponent } from './pages/user-livros-emprestados/user-livros-emprestados.component';
+import { UserLivrosAtrasadosComponent } from './pages/user-livros-atrasados/user-livros-atrasados.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +56,12 @@ import { UserEditComponent } from './pages/user-edit/user-edit.component';
     ErrorUnallowedComponent,
     ButtonEditComponent,
     UserEditComponent,
+    EmprestimosComponent,
+    LivrosEmprestadosAdminComponent,
+    LivrosAtrasadosAdminComponent,
+    UserComLivrosComponent,
+    UserLivrosEmprestadosComponent,
+    UserLivrosAtrasadosComponent,
 
   ],
   imports: [
