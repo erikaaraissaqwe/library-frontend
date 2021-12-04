@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { toast } from 'bulma-toast';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/User';
 
@@ -27,7 +28,13 @@ export class UserDetailComponent implements OnInit {
         this.userSelecionado = User;
       },
       (err) => {
-      alert(err.error.msg);
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          dismissible: true,
+          duration: 4000,
+          position: 'bottom-center'
+        });
     }
   );
 }
@@ -37,12 +44,24 @@ excluir(user: User) : void{
     this.Userservice.delete(id).subscribe(
       (res) => {
       if (res.ok) {
-        alert("O usuário foi deletado com sucesso");
+        toast({
+          message: 'O usuário foi deletado com sucesso.',
+          type: 'is-success',
+          dismissible: true,
+          duration: 4000,
+          position: 'bottom-center'
+        });
         this.router.navigate(["/userList"]);
       }
     },
     (err) => {
-      alert(err.error.msg);
+      toast({
+        message: err.error.msg,
+        type: 'is-danger',
+        dismissible: true,
+        duration: 4000,
+        position: 'bottom-center'
+      });
     }
     );
 }

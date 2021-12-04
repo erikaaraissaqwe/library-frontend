@@ -1,6 +1,6 @@
 <app-navbar-admin *ngIf="isAdmin"></app-navbar-admin>
 <app-navbar *ngIf="!isAdmin"></app-navbar>
-
+<h2 class="title is-2">{{title}}</h2>
 <div class="columns is-multiline is-centered add-padding">
     <div class="column is-one-third change-width" *ngFor="let b of listAllBooks">
         <div class="card is-half
@@ -15,7 +15,7 @@
             <div class="card-content">
               <routerLink routerLink="/detailsBook/{{b._id}}">
               <div class="media">
-                <div class="media-content">
+                <div>
                   <p class="title is-4 is-text-overflow" [attr.data-tooltip]="b?.title">{{b?.title | titleBook}}</p>
                   <p class="subtitle is-6 is-text-overflow has-tooltip-bottom" [attr.data-tooltip]="b?.author">{{b?.author | authorBook}}</p>
                 </div>                
@@ -24,5 +24,4 @@
             </div>
           </div>
     </div>
-    
 </div>

@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
+import { toast } from 'bulma-toast';
 
 @Component({
   selector: 'app-user-edit',
@@ -36,7 +37,13 @@ export class UserEditComponent implements OnInit {
         this.setUser(User);
       },
       (err) => {
-        alert(err.error.msg);
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          dismissible: true,
+          duration: 4000,
+          position: 'bottom-center'
+        });
       }
     );
   }
@@ -80,7 +87,13 @@ private initForm() {
     
       this.userService.update(userUpdate,this.user._id).subscribe(
         (data) => {
-          alert("Atualizado com sucesso.");
+          toast({
+            message:"Atualizado com sucesso.",
+            type: 'is-success',
+            dismissible: true,
+            duration: 4000,
+            position: 'bottom-center'
+          });
           this.router.navigate(['/perfil']);
         },
         (err) => {

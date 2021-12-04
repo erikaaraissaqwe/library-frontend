@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { toast } from 'bulma-toast';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
@@ -27,7 +28,17 @@ export class UserListComponent implements OnInit {
     this.UserService.listAll().pipe(first()).subscribe(
      (books) => {
       this.listAllUsers = books["data"];
-     }
+     },
+     (err) => {
+      toast({
+        message: err.error.msg,
+        type: 'is-danger',
+        dismissible: true,
+        duration: 4000,
+        position: 'bottom-center'
+      });
+      this.router.navigate(["/error"]);
+      }
     );
     
    
@@ -37,12 +48,24 @@ export class UserListComponent implements OnInit {
       this.UserService.delete(id).subscribe(
         (res) => {
         if (res.ok) {
-          alert("O usuário foi deletado com sucesso");
+          toast({
+            message: 'O usuário foi deletado com sucesso.',
+            type: 'is-success',
+            duration: 4000,
+            dismissible: true,
+            position: 'bottom-center'
+          });
           this.loadUser();
         }
       },
       (err) => {
-        alert(err.error.msg);
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          dismissible: true,
+          duration: 4000,
+          position: 'bottom-center'
+        });
       }
       );
   }

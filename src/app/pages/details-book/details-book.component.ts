@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { Alert } from 'selenium-webdriver';
 import { Book } from 'src/app/models/Book';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BookService } from 'src/app/services/book.service';
 import { BookUserService } from 'src/app/services/book-user.service';
+import { toast } from 'bulma-toast';
 
 @Component({
   selector: 'app-details-book',
@@ -13,7 +13,6 @@ import { BookUserService } from 'src/app/services/book-user.service';
   styleUrls: ['./details-book.component.css']
 })
 export class DetailsBookComponent implements OnInit {
-  bookUser = {bookId : "", userId: "", loadDate: "", expectedDeliveryDate: "", actualDeliveryDate: "", timestamps: true};
   book: Book;
   isAdmin = this.authService.isAdmin();
   
@@ -22,7 +21,7 @@ export class DetailsBookComponent implements OnInit {
     private bookService: BookService,
     private routerActivated: ActivatedRoute,
     private authService: AuthenticationService,
-    private BookUserService: BookUserService
+    private bookUserService: BookUserService
   ) { }
 
     ngOnInit(): void {
@@ -40,28 +39,65 @@ export class DetailsBookComponent implements OnInit {
       }
     );
   }
-emprestar(idBook:string){
-  let id = sessionStorage.getItem("id");
-  this.bookUser.bookId = idBook;
-  this.bookUser.userId = id;
-  this.bookUser.loadDate = String(new Date());
-  this.bookUser.expectedDeliveryDate = "";
-  this.bookUser.actualDeliveryDate = "";
 
-  this.BookUserService.register(this.bookUser);
-  console.log(this);
+
+loan(id: string): void {
+  let expectedDelivery = new Date();
+  expectedDelivery.setDate(expectedDelivery.getDate() + 7);
+  
+  const bookUser = {
+    userId: sessionStorage.getItem("id"),
+    bookId: id,
+    loadDate: String(new Date().toISOString().slice(0,10)),
+    expectedDeliveryDate: String(expectedDelivery.toISOString().slice(0,10)),
+  };
+
+  this.bookUserService.register(bookUser).subscribe(
+    (data) => {
+      toast({
+        message: 'O emprestimo foi realizado com sucesso',
+        type: 'is-success',
+        duration: 4000,
+        dismissible: true,
+        position: 'bottom-center'
+      });
+      this.router.navigate(["/home"]);
+    },
+    (err) => {
+      toast({
+        message: err.error.msg,
+        type: 'is-danger',
+        duration: 4000,
+        dismissible: true,
+        position: 'bottom-center'
+      });
+     this.router.navigate(["/error"]);
+     }
+  );
 }
   delete(id: string, title: string) {
     if (confirm("Remover "+ title +"?")) {
       this.bookService.delete(id).subscribe(
         (res) => {
         if (res.ok) {
-          alert("O livro foi deletado com sucesso");
+          toast({
+            message: 'O livro foi deletado com sucesso.',
+            type: 'is-success',
+            duration: 4000,
+            dismissible: true,
+            position: 'bottom-center'
+          });
           this.router.navigate(["/home"]);
         }
       },
       (err) => {
-        alert(err.error.msg);
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          duration: 4000,
+          dismissible: true,
+          position: 'bottom-center'
+        });
       }
       );
     }

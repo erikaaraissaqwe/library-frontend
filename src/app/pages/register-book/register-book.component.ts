@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/Book';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BookService } from 'src/app/services/book.service';
+import { toast } from 'bulma-toast';
 
 @Component({
   selector: 'app-register-book',
@@ -75,7 +76,14 @@ export class RegisterBookComponent implements OnInit {
       return true;
     }
     else{
-      alert("Preencha com dados válidos!");
+      toast({
+        message: 'Preencha com dados válidos!',
+        type: 'is-warning',
+        duration: 4000,
+        dismissible: true,
+        position: 'bottom-center'
+      });
+
       return false;
     }
   }
@@ -127,7 +135,13 @@ export class RegisterBookComponent implements OnInit {
         .register(newBook)
         .subscribe(
           (data) => {
-            alert("Cadastrado com sucesso")
+            toast({
+              message: 'A criação do livro foi realizado com sucesso',
+              type: 'is-success',
+              dismissible: true,
+              duration: 4000,
+              position: 'bottom-center'
+            });
             this.router.navigate(['/home']);
           },
           (err) => {
@@ -142,7 +156,13 @@ export class RegisterBookComponent implements OnInit {
         .update(newBook, this.book._id)
         .subscribe(
           (data) => {
-            alert("Atualizado com sucesso.");
+            toast({
+              message: 'Atualizado com sucesso.',
+              type: 'is-success',
+              dismissible: true,
+              duration: 4000,
+              position: 'bottom-center'
+            });
             this.router.navigate(['/detailsBook/' + this.book._id]);
           },
           (err) => {
@@ -163,3 +183,4 @@ export class RegisterBookComponent implements OnInit {
     }
   }
 }
+

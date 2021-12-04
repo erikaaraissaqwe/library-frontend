@@ -9,8 +9,8 @@ import { User } from '../models/User';
 })
 export class AuthenticationService {
 
-  userBackendUrl = "http://localhost:8085/api/user";
-  admBackendUrl = "http://localhost:8085/api/admin";
+  userBackendUrl = "http://localhost:3333/api/user";
+  admBackendUrl = "http://localhost:3333/api/admin";
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { toast } from 'bulma-toast';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/User';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -37,7 +38,13 @@ export class PerfilComponent implements OnInit {
         this.user = User;
       },
       (err) => {
-      alert(err.error.msg);
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          duration: 4000,
+          dismissible: true,
+          position: 'bottom-center'
+        });
     }
   );
 }

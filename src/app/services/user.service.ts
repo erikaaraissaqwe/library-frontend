@@ -17,7 +17,7 @@ export class UserService {
     body = body.set("admin", String(user.admin));
     return this.http.put<any>(this.backendUrl + id, body, {observe: "response"});
   }
-  backendUrl = "http://localhost:8085/api/user/";
+  backendUrl = "http://localhost:3333/api/user/";
 
   listAll(): Observable<User[]>{
     return this.http.get<any>(this.backendUrl + "listAll");

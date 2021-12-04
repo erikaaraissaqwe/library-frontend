@@ -4,6 +4,5 @@ export interface BookUser {
     userId: string,
     loadDate: string,
     expectedDeliveryDate: string,
-    actualDeliveryDate: string,
-    timestamps: boolean
+    actualDeliveryDate?: string
 }
