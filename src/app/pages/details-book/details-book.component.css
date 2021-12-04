@@ -8,6 +8,10 @@
     justify-content: space-evenly;
 }
 
+.min-height{
+    min-height: 450px;
+}
+
 
 @media(max-width: 768px) {
     #image-display{
