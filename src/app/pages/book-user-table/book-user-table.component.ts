@@ -67,6 +67,7 @@ export class BookUserTableComponent implements OnInit {
      (booksUser) => {
       console.log(booksUser["data"])
       this.listAllBooks = booksUser["data"];
+
      },
      (err) => {
       toast({
@@ -80,6 +81,7 @@ export class BookUserTableComponent implements OnInit {
       }
     );
   }
+  
 
   loadBooksLateByUserId(): void {
     let id = sessionStorage.getItem("id");
@@ -99,6 +101,33 @@ export class BookUserTableComponent implements OnInit {
       this.router.navigate(["/error"]);
       }
     );
+  }
+  delete(id: string, id_book: string) {
+    if (confirm("Devolver?")) {
+      this.bookUserService.delete(id, id_book).subscribe(
+        (res) => {
+        if (res.ok) {
+          toast({
+            message: 'A devolução foi concluida com sucesso.',
+            type: 'is-success',
+            duration: 4000,
+            dismissible: true,
+            position: 'bottom-center'
+          });
+          this.router.navigate(["/home"]);
+        }
+      },
+      (err) => {
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          duration: 4000,
+          dismissible: true,
+          position: 'bottom-center'
+        });
+      }
+      );
+    }
   }
 
   ngOnInit(): void {
