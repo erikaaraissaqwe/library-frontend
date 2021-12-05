@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "error403", component: ErrorUnallowedComponent },
-  { path: "**", component: ErrorComponent },
+  { path: "**", component: HomeComponent },
   { path: "error", component: ErrorComponent }
   
 ];
