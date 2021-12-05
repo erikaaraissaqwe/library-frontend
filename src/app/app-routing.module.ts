@@ -33,10 +33,10 @@ const routes: Routes = [
   { path: 'userDetail/:id', component: UserDetailComponent, canActivate: [AuthGuardAdmin] },
   { path: "edit", component: UserEditComponent },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "error403", component: ErrorUnallowedComponent },
-  { path: "**", component: HomeComponent },
-  { path: "error", component: ErrorComponent }
+  { path: "error", component: ErrorComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "**", component: ErrorComponent},
   
 ];
 
