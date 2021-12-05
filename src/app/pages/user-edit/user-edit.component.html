@@ -32,7 +32,6 @@
             </div>
               <form [formGroup]="myForm" (submit)="onSubmit()">
                 <div class="field">
-
                   <label for="name" class="label">Nome:</label>
                   <div class="control">
                     <input
@@ -56,31 +55,33 @@
                   >
                     {{ myForm.get("name").errors | errorForm: "Nome" }}
                   </p>
-
-                  <label for="phone" class="label">Telefone:</label>
-                  <div class="control">
-                    <input
-                      id="phoneNumber"
-                      class="input"
-                      [ngClass]="{
-                        'is-danger':
+                </div>
+                  <div class="field">
+                    <label for="phone" class="label">Telefone:</label>
+                    <div class="control">
+                      <input
+                        id="phoneNumber"
+                        class="input"
+                        [ngClass]="{
+                          'is-danger':
+                          myForm.get('phoneNumber').dirty &&
+                          !myForm.get('phoneNumber').valid
+                        }"
+                        type="text"
+                        formControlName="phoneNumber"
+                      />
+                    </div>
+                    <p
+                      *ngIf="
                         myForm.get('phoneNumber').dirty &&
                         !myForm.get('phoneNumber').valid
-                      }"
-                      type="text"
-                      formControlName="phoneNumber"
-                    />
-                  </div>
-                  <p
-                    *ngIf="
-                      myForm.get('phoneNumber').dirty &&
-                      !myForm.get('phoneNumber').valid
-                    "
-                      class="help is-danger"
-                    >
-                      {{ myForm.get("phoneNumber").errors | errorForm: "Telefone" }}
-                  </p>
-
+                      "
+                        class="help is-danger"
+                      >
+                        {{ myForm.get("phoneNumber").errors | errorForm: "Telefone" }}
+                    </p>
+                </div>
+                <div class="field">
                   <label for="email" class="label">Email:</label>
                   <div class="control">
                     <input
@@ -104,6 +105,7 @@
                     >
                       {{ myForm.get("email").errors | errorForm: "E-mail" }}
                   </p>
+                </div>
 
                    <label for="password" class="label">Nova senha:</label>
                   <div class="control">
@@ -115,7 +117,7 @@
                           myForm.get('password').dirty &&
                           !myForm.get('password').valid
                         }"
-                      type="text"
+                      type="password"
                       formControlName="password"
                     />
                   </div>
@@ -146,7 +148,6 @@
                   <div class="control">
                     <app-button-back></app-button-back>
                   </div>
-                </div>
                 </div>
               </form>
             </div>

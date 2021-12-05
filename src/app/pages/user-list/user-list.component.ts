@@ -45,6 +45,7 @@ export class UserListComponent implements OnInit {
   }
   excluir(user: User) : void{
     let id = user._id;
+    if (confirm("Deseja excluir: " + user.name + "?")) {
       this.UserService.delete(id).subscribe(
         (res) => {
         if (res.ok) {
@@ -69,4 +70,5 @@ export class UserListComponent implements OnInit {
       }
       );
   }
+}
 }

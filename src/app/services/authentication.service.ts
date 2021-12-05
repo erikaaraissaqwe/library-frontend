@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { User } from '../models/User';
 
 @Injectable({
@@ -9,23 +8,12 @@ import { User } from '../models/User';
 })
 export class AuthenticationService {
 
-  userBackendUrl = "http://localhost:8085/api/user";
-  admBackendUrl = "http://localhost:8085/api/admin";
-
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  userBackendUrl = "https://library-backend.glitch.me/api/user";
+  admBackendUrl = "https://library-backend.glitch.me/api/admin";
 
   constructor(private http: HttpClient) {
-    // this.currentUserSubject = new BehaviorSubject<User>(
-    //   JSON.parse(localStorage.getItem("user"))
-    // );
-
-    // this.currentUser = this.currentUserSubject.asObservable();
+   
   }
-
-  // get currentUserValue(): User {
-  //   return this.currentUserSubject.value;
-  // }
 
   login(user: User, isAdm: boolean) {
     let backendUrl = isAdm ? this.admBackendUrl : this.userBackendUrl;

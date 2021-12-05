@@ -41,39 +41,41 @@ export class DetailsBookComponent implements OnInit {
   }
 
 
-loan(id: string): void {
-  let expectedDelivery = new Date();
-  expectedDelivery.setDate(expectedDelivery.getDate() + 7);
-  
-  const bookUser = {
-    userId: sessionStorage.getItem("id"),
-    bookId: id,
-    loadDate: String(new Date().toISOString().slice(0,10)),
-    expectedDeliveryDate: String(expectedDelivery.toISOString().slice(0,10)),
-  };
+loan(id: string, title:string): void {
+  if (confirm("Deseja pegar emprestado o título: "+ title +"?")) {
+    let expectedDelivery = new Date();
+    expectedDelivery.setDate(expectedDelivery.getDate() + 7);
+    
+    const bookUser = {
+      userId: sessionStorage.getItem("id"),
+      bookId: id,
+      loadDate: String(new Date().toISOString().slice(0,10)),
+      expectedDeliveryDate: String(expectedDelivery.toISOString().slice(0,10)),
+    };
 
-  this.bookUserService.register(bookUser).subscribe(
-    (data) => {
-      toast({
-        message: 'O emprestimo foi realizado com sucesso',
-        type: 'is-success',
-        duration: 4000,
-        dismissible: true,
-        position: 'bottom-center'
-      });
-      this.router.navigate(["/home"]);
-    },
-    (err) => {
-      toast({
-        message: err.error.msg,
-        type: 'is-danger',
-        duration: 4000,
-        dismissible: true,
-        position: 'bottom-center'
-      });
-     this.router.navigate(["/error"]);
-     }
-  );
+    this.bookUserService.register(bookUser).subscribe(
+      (data) => {
+        toast({
+          message: 'O emprestimo foi realizado com sucesso',
+          type: 'is-success',
+          duration: 4000,
+          dismissible: true,
+          position: 'bottom-center'
+        });
+        this.router.navigate(["/home"]);
+      },
+      (err) => {
+        toast({
+          message: err.error.msg,
+          type: 'is-danger',
+          duration: 4000,
+          dismissible: true,
+          position: 'bottom-center'
+        });
+      this.router.navigate(["/error"]);
+      }
+    );
+  }
 }
   delete(id: string, title: string) {
     if (confirm("Remover "+ title +"?")) {

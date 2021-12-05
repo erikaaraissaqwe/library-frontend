@@ -40,7 +40,7 @@
         </div>
         <div class="media" *ngIf="!isAdmin">
           <div class="media-content" id='buttons'>
-           <button class="button is-primary is-medium" (click)="loan(book?._id)" *ngIf="!book?.borrowed">
+           <button class="button is-primary is-medium" (click)="loan(book?._id, book?.title)" *ngIf="!book?.borrowed">
               Pegar emprestado
            </button>
            <app-button-back class="button is-warning is-medium"></app-button-back>

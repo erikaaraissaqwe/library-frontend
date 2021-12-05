@@ -41,6 +41,7 @@ export class UserDetailComponent implements OnInit {
 
 excluir(user: User) : void{
   let id = user._id;
+  if (confirm("Deseja excluir: " + user.name + "?")) {
     this.Userservice.delete(id).subscribe(
       (res) => {
       if (res.ok) {
@@ -64,6 +65,7 @@ excluir(user: User) : void{
       });
     }
     );
+  }
 }
   ngOnInit(): void {
     this.getUser(this.id);

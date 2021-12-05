@@ -23,3 +23,7 @@
 span{
     cursor: pointer;
 }
+
+.is-center{
+    text-align: center;
+}

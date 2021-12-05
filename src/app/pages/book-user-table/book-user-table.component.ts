@@ -102,9 +102,10 @@ export class BookUserTableComponent implements OnInit {
       }
     );
   }
-  delete(id: string, id_book: string) {
+
+  delete(id: string) {
     if (confirm("Devolver?")) {
-      this.bookUserService.delete(id, id_book).subscribe(
+      this.bookUserService.delete(id).subscribe(
         (res) => {
         if (res.ok) {
           toast({
@@ -114,7 +115,7 @@ export class BookUserTableComponent implements OnInit {
             dismissible: true,
             position: 'bottom-center'
           });
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/loadBooksByUserId"]);
         }
       },
       (err) => {

@@ -19,7 +19,7 @@ export class ErrorFormPipe implements PipeTransform {
       case 'email':
         return `${input} precisa ser válido.`;
         case 'pattern':
-        return `${input} precisa ser um telefone válido. Por favor, digite somente números.`;
+        return `${input} precisa ser um ${input} válido. Por favor, digite novamente.`;
       default:
         return '';
     }

@@ -1,5 +1,6 @@
 <app-navbar-admin *ngIf="isAdmin"></app-navbar-admin>
 <app-navbar *ngIf="!isAdmin"></app-navbar>
+<div class="is-center">
 <h2 class="title is-2">{{title}}</h2>
 <div class="columns is-multiline is-centered add-padding">
     <div class="column is-one-third change-width" *ngFor="let b of listAllBooks">
@@ -24,4 +25,5 @@
             </div>
           </div>
     </div>
+</div>
 </div>

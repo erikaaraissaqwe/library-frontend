@@ -112,7 +112,7 @@ export class RegisterBookComponent implements OnInit {
         Validators.minLength(8),
         Validators.maxLength(1500),
       ]),
-      borrowed: new FormControl(false, []),
+      borrowed: new FormControl({value: false, disabled: true}, []),
     });
   }
   

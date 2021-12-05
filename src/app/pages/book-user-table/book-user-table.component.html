@@ -2,7 +2,7 @@
 <app-navbar-admin *ngIf="isAdmin"></app-navbar-admin>
 <app-navbar *ngIf="!isAdmin"></app-navbar>
 
-<div class="column is-5-desktop is-8-tablet is-offset-2-tablet is-offset-0-desktop">
+<div class="container">
     <div class="card">
         <div class="card-content">
             <h2 class="title is-2">{{title}}</h2>
@@ -14,7 +14,7 @@
                             <td *ngIf="isAdmin">Usuário</td>
                             <td>Data do empréstimo</td>
                             <td>Data da previsão de entrega</td>
-                            <td></td>
+                            <td *ngIf="!isAdmin">Ação</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,9 +23,11 @@
                             <td *ngIf="isAdmin"><a routerLink="/userDetail/{{b.userId._id}}">{{b.userId.name}}</a></td>
                             <td>{{b.loadDate | date}}</td>
                             <td>{{b.expectedDeliveryDate | date}}</td>
-                            <td> <button class="button is-danger is-medium" (click)="delete(b._id,b.bookId)">
-                                Devolver
-                               </button></td>
+                            <td *ngIf="!isAdmin"> 
+                                <button class="button is-danger is-small" (click)="delete(b._id)">
+                                    Devolver
+                               </button>
+                            </td>
                         </tr>
                        
                     </tbody>

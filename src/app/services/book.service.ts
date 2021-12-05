@@ -10,7 +10,7 @@ import { Book } from '../models/Book';
 })
 export class BookService {
 
-  backendUrl = "http://localhost:8085/api/book/";
+  backendUrl = "https://library-backend.glitch.me/api/book/";
 
   register(book: Book): Observable<any> {
     let body = new HttpParams();

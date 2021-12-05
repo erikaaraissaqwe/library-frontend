@@ -9,7 +9,7 @@ import { BookUser } from '../models/BookUser';
   providedIn: 'root'
 })
 export class BookUserService {
-   backendUrl = "http://localhost:8085/api/userBook/";
+   backendUrl = "https://library-backend.glitch.me/api/userBook/";
 
    register(bookUser : BookUser): Observable<any> {
     let body = new HttpParams();
@@ -42,9 +42,12 @@ export class BookUserService {
     console.log(this.backendUrl  + "listAllByUserId/" + id)
     return this.http.get<BookUser[]>(this.backendUrl  + "listAllByUserId/" + id);
   }
-  delete(id: String, id_book: String): Observable<any> {
+
+  delete(id: String): Observable<any> {
+    console.log(this.backendUrl + id);
     return this.http.delete(this.backendUrl + id, {observe: "response"});
   }
+
   constructor(private http: HttpClient) { }
 
 }
