@@ -27,3 +27,7 @@ span{
 .is-center{
     text-align: center;
 }
+
+#content{
+    text-align: initial;
+}
