@@ -1,15 +1,16 @@
 <app-navbar-admin></app-navbar-admin>
 
-<div class="columns is-multiline is-centered add-padding">
+<div class="columns is-multiline is-centered add-padding" id="container">
     <div class="column is-one-third change-width" >
         <div class="card is-half">
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4">{{userSelecionado?.name}}</p>
+                  <p class="title is-2">{{userSelecionado?.name}}</p>
+                  <p class="subtitle is-5">{{userSelecionado?.phone | phone}}</p>
                   <!-- <p class="subtitle is-6">{{userSelecionado?._id}}</p> -->
-                  <p class="subtitle is-6">{{userSelecionado?.email}}</p>
-                  <p class="subtitle is-6">{{userSelecionado?.phone | phone}}</p>
+                  <p class="subtitle is-5">{{userSelecionado?.email}}</p>
+                  
                   <button type="button" (click)="excluir(userSelecionado)" class="button is-danger is-fullwidth">Excluir</button>
                   <br>
                   <app-button-back></app-button-back>                 

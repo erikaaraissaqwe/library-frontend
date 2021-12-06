@@ -115,7 +115,7 @@ export class BookUserTableComponent implements OnInit {
             dismissible: true,
             position: 'bottom-center'
           });
-          this.router.navigate(["/loadBooksByUserId"]);
+          this.router.navigate(["/home"]);
         }
       },
       (err) => {
